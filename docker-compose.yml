@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  expense-tracker:
+    build:
+      context: expense-tracker
+      target: production
+    volumes:
+      - './expense-tracker/src:/expense-tracker/src'
+      - './expense-tracker/public:/expense-tracker/public'
+      - './expense-tracker/index.html:/expense-tracker/index.html'
+    ports:
+      - '8080:8080'
+  meal-searching:
+    build:
+      context: meal-searching
+      target: production
+    volumes:
+      - './meal-searching/src:/meal-searching/src'
+      - './meal-searching/public:/meal-searching/public'
+      - './meal-searching/index.html:/meal-searching/index.html'
+      - './meal-searching/tailwind.config.js:/meal-searching/tailwind.config.js'
+      - './meal-searching/postcss.config.js:/meal-searching/postcss.config.js'
+    ports:
+      - '8081:8081'
+  notes:
+    build:
+      context: notes
+      target: production
+    volumes:
+      - './notes/src:/notes/src'
+      - './notes/public:/notes/public'
+      - './notes/index.html:/notes/index.html'
+    ports:
+      - '8082:8082'
+  quiz:
+    build:
+      context: quiz
+      target: production
+    volumes:
+      - './quiz/src:/quiz/src'
+      - './quiz/public:/quiz/public'
+      - './quiz/index.html:/quiz/index.html'
+    ports:
+      - '8083:8083'
